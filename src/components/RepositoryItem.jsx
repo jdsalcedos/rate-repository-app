@@ -1,22 +1,51 @@
-import { View, Text, StyleSheet } from "react-native";
+import { Image, View, StyleSheet } from "react-native";
 import React from "react";
 import StyledText from "./StyledText";
+import RepositoryStats from "./RepositoryStats";
+import theme from "../theme";
+
+const RepositoryItemHeader = ({ image_url, nombre }) => (
+  <View style={{ flexDirection: "row", paddingBottom: 2 }}>
+    <View style={{ paddingRight: 10 }}>
+      <Image style={styles.image} source={{ uri: image_url }} />
+    </View>
+    {/* ocupe todo el espacio que pueda y que haga un salto de linea en caso de que no quepa */}
+    <View style={{ flex: 1, justifyContent: "center" }}>
+      <StyledText fontWeight="bold">{nombre}</StyledText>
+      <StyledText color="secondary">Description</StyledText>
+      <StyledText style={styles.language}>Algo de texto</StyledText>
+    </View>
+  </View>
+);
+
+const RepositoryItem = (props) => (
+  <View key={props.id} style={styles.container}>
+    <RepositoryItemHeader {...props} />
+    <RepositoryStats {...props} />
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {
     padding: 20,
-    paddingBottom: 5,
-    paddingTop: 5,
+    paddingVertical: 5,
+    // paddingBottom: 5,
+    // paddingTop: 5,
+  },
+  language: {
+    padding: 4,
+    color: theme.colors.white,
+    backgroundColor: theme.colors.primary,
+    alignSelf: "flex-start", //para que el color no vaya hasta el fondo sino que ocupe el espacio que necesita
+    borderRadius: 4,
+    //overflow: "hidden", puede que no aparezca el borderRadius, por lo que ahi se usa este
+    marginVertical: 4, //lo mismo que poner marginBottom y marginTop
+  },
+  image: {
+    //siempre toca estilar las imagenes ya que toca poner cuanto va a ocupar
+    width: 48,
+    height: 48,
+    borderRadius: 4,
   },
 });
-
-const RepositoryItem = (props) => (
-  <View key={props.id} style={styles.container}>
-    <StyledText fontSize="subheading" fontWeight="bold">
-      {props.nombre}
-    </StyledText>
-    <StyledText>{props.email}</StyledText>
-    <StyledText>{props.phone}</StyledText>
-  </View>
-);
 export default RepositoryItem;
