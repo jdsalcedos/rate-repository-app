@@ -4,6 +4,7 @@ import repositories from "../data/repositories";
 import RepositoryItem from "./RepositoryItem";
 const RepositoryList = () => {
   return (
+    // para renderizar datos, haciendo un loop que contiene elementos con datos
     <FlatList
       data={repositories}
       ItemSeparatorComponent={() => <Text> </Text>}
