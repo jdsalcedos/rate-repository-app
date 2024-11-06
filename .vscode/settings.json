@@ -1,6 +1,7 @@
 {
   "cSpell.language": "es,en",
   "cSpell.enableFiletypes": [
+    "!javascript",
     "!javascriptreact"
   ]
 }

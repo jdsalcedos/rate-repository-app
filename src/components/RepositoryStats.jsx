@@ -11,21 +11,27 @@ const RepositoryStats = (props) => {
     <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
       <View>
         <StyledText align="center" fontWeight="bold">
-          Email:
+          {parseThousands(props.stargazersCount)}
         </StyledText>
-        <StyledText align="center">{props.email}</StyledText>
+        <StyledText align="center">Stars</StyledText>
       </View>
       <View>
         <StyledText align="center" fontWeight="bold">
-          Phone:
+          {parseThousands(props.forksCount)}
         </StyledText>
-        <StyledText align="center">{props.phone}</StyledText>
+        <StyledText align="center">Forks</StyledText>
       </View>
       <View>
         <StyledText align="center" fontWeight="bold">
-          Salary:
+          {props.reviewCount}
         </StyledText>
-        <StyledText align="center">{parseThousands(props.salary)}</StyledText>
+        <StyledText align="center">Review</StyledText>
+      </View>
+      <View>
+        <StyledText align="center" fontWeight="bold">
+          {props.ratingAverage}
+        </StyledText>
+        <StyledText align="center">Rating</StyledText>
       </View>
     </View>
   );

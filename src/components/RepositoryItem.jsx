@@ -4,16 +4,21 @@ import StyledText from "./StyledText";
 import RepositoryStats from "./RepositoryStats";
 import theme from "../theme";
 
-const RepositoryItemHeader = ({ image_url, nombre }) => (
+const RepositoryItemHeader = ({
+  ownerAvatarUrl,
+  fullName,
+  description,
+  language,
+}) => (
   <View style={{ flexDirection: "row", paddingBottom: 2 }}>
     <View style={{ paddingRight: 10 }}>
-      <Image style={styles.image} source={{ uri: image_url }} />
+      <Image style={styles.image} source={{ uri: ownerAvatarUrl }} />
     </View>
     {/* ocupe todo el espacio que pueda y que haga un salto de linea en caso de que no quepa */}
     <View style={{ flex: 1, justifyContent: "center" }}>
-      <StyledText fontWeight="bold">{nombre}</StyledText>
-      <StyledText color="secondary">Description</StyledText>
-      <StyledText style={styles.language}>Algo de texto</StyledText>
+      <StyledText fontWeight="bold">{fullName}</StyledText>
+      <StyledText color="secondary">{description}</StyledText>
+      <StyledText style={styles.language}>{language}</StyledText>
     </View>
   </View>
 );
